@@ -2,6 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 import 'bootstrap/scss/bootstrap.scss';
 
 const GlobalStyle = createGlobalStyle`
+  html, body {
+    height: 100%;
+  }
+
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,6 +18,10 @@ const GlobalStyle = createGlobalStyle`
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
+  }
+
+  #root {
+    height: 100%;
   }
 `;
 
