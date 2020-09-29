@@ -10,7 +10,7 @@ function FuncPanel() {
   } = useContext(SecureNotesContext);
 
   return (
-    <Flex flexGrow="1" flexDirection="column" p="60px">
+    <Flex flexGrow="1" flexDirection="column" p="60px" position="relative">
       {editMode ? <EditPanel /> : selected ? <ViewPanel /> : null}
     </Flex>
   );

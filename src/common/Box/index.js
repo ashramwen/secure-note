@@ -2,22 +2,22 @@ import styled from 'styled-components';
 import {
   compose,
   space,
-  color,
   layout,
+  color,
   border,
   background,
   position,
-  shadow,
+  typography,
 } from 'styled-system';
 
 const styleProps = compose(
   space,
   layout,
-  border,
   color,
+  border,
   background,
   position,
-  shadow
+  typography
 );
 
 const Box = styled.div`

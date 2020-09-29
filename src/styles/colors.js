@@ -1,5 +1,6 @@
 export const sapphireBlue = '#05203f';
 export const white = '#ffffff';
+export const lightGray = '#f5f6fa';
 
 export const green = '#5caf5c';
 export const gray = '#cccccc';

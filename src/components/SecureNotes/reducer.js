@@ -1,13 +1,10 @@
-const mockList = [
-  { id: 1, title: 'My first note' },
-  { id: 2, title: 'My second note' },
-  { id: 3, title: 'My third note' },
-];
+import { mockList } from 'mocks';
 
 export const initialState = {
   notes: [...mockList],
   selected: null,
   editMode: false,
+  content: null,
 };
 
 export function secureNotesReducer(state, action) {
@@ -25,9 +22,19 @@ export function secureNotesReducer(state, action) {
       return {
         ...state,
         selected: action.payload,
+        content: null,
       };
     }
 
+    // fetch note content
+    case 'fetchContent': {
+      return {
+        ...state,
+        content: action.payload,
+      };
+    }
+
+    // create a new note
     case 'newNote': {
       return {
         ...state,

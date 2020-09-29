@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import classnames from 'classnames';
+import { wait } from 'utils';
 import { PlusSvg } from 'svg';
+import { lightGray } from 'styles/colors';
 import RoundedButton from 'common/RoundedButton';
-import Box from 'common/Box';
+import Flex from 'common/Flex';
 import { SecureNotesContext } from '../../context';
 import { Item } from './Styled';
 
 function NoteList() {
-  const {
-    state: { notes, selected, editMode },
-    dispatch,
-  } = useContext(SecureNotesContext);
+  const { state, dispatch } = useContext(SecureNotesContext);
+  const { notes, selected, editMode } = state;
 
   const handleNewNote = () => {
     dispatch({
@@ -32,23 +32,54 @@ function NoteList() {
     }
   };
 
+  useEffect(() => {
+    let canceled = false;
+
+    if (selected) {
+      wait(selected.id).then((res) => {
+        if (!canceled) {
+          dispatch({
+            type: 'fetchContent',
+            payload: res,
+          });
+        }
+      });
+    }
+
+    return () => {
+      canceled = true;
+    };
+  }, [dispatch, selected]);
+
   return (
-    <Box minWidth="25%" backgroundColor="#f5f6fa" p="60px">
-      <RoundedButton onClick={handleNewNote} disabled={editMode} mb="50px">
+    <Flex
+      backgroundColor={lightGray}
+      pt="60px"
+      pl="60px"
+      flexDirection="column"
+    >
+      <RoundedButton
+        onClick={handleNewNote}
+        disabled={editMode}
+        mr="60px"
+        mb="50px"
+      >
         <PlusSvg />
         New note
       </RoundedButton>
 
-      {notes.map((note) => (
-        <Item
-          className={classnames({ selected: selected?.id === note.id })}
-          key={note.id}
-          onClick={() => handleClick(note)}
-        >
-          {note.title}
-        </Item>
-      ))}
-    </Box>
+      <Flex flexDirection="column" overflowY="auto" pb="60px">
+        {notes.map((note) => (
+          <Item
+            className={classnames({ selected: selected?.id === note.id })}
+            key={note.id}
+            onClick={() => handleClick(note)}
+          >
+            {note.title}
+          </Item>
+        ))}
+      </Flex>
+    </Flex>
   );
 }
 

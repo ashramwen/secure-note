@@ -3,15 +3,12 @@ import { CancelSvg, DeleteSvg, SaveSvg } from 'svg';
 import Button from 'common/Button';
 import Divider from 'common/Divider';
 import Flex from 'common/Flex';
-import TitleHighlight from 'common/TitleHighlight';
 import { SecureNotesContext } from '../../context';
 import { Input, Textarea } from './Styled';
 
-const input = '# This is a header\n\nAnd this is a paragraph';
-
 function EditPanel() {
   const {
-    state: { selected },
+    state: { selected, content },
     dispatch,
   } = useContext(SecureNotesContext);
 
@@ -40,7 +37,6 @@ function EditPanel() {
     <>
       <Flex flexGrow="1" flexDirection="column">
         <Flex>
-          <TitleHighlight />
           <Input
             type="text"
             placeholder="Title"
@@ -48,7 +44,10 @@ function EditPanel() {
           />
         </Flex>
         <Divider />
-        <Textarea defaultValue={input} placeholder="Write your note here..." />
+        <Textarea
+          defaultValue={content ?? ''}
+          placeholder="Write your note here..."
+        />
       </Flex>
 
       <Flex justifyContent="space-between">

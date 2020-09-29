@@ -1,19 +1,18 @@
 import React, { useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
 
+import { EditSvg } from 'svg';
 import Box from 'common/Box';
 import Button from 'common/Button';
 import Divider from 'common/Divider';
 import Flex from 'common/Flex';
 import TitleHighlight from 'common/TitleHighlight';
 import { SecureNotesContext } from '../../context';
-import { EditSvg } from 'svg';
-
-const input = '# This is a header\n\nAnd this is a paragraph';
+import Loading from '../Loading';
 
 function ViewPanel() {
   const {
-    state: { selected },
+    state: { selected, content },
     dispatch,
   } = useContext(SecureNotesContext);
 
@@ -26,23 +25,31 @@ function ViewPanel() {
 
   return (
     <>
-      <Flex flexGrow="1" flexDirection="column">
-        <Flex height="20px" alignItems="center">
-          <TitleHighlight />
-          <Box pl="2px">{selected.title}</Box>
-        </Flex>
-        <Divider />
-        <Box>
-          <ReactMarkdown source={input} />
-        </Box>
-      </Flex>
+      {content ? (
+        <>
+          <Flex flexGrow="1" flexDirection="column">
+            <Flex height="25px" alignItems="center">
+              <TitleHighlight />
+              <Box fontSize="20px" p="1px 0 1px 2px">
+                {selected.title}
+              </Box>
+            </Flex>
+            <Divider />
+            <Box>
+              <ReactMarkdown source={content} />
+            </Box>
+          </Flex>
 
-      <Flex justifyContent="flex-end" p="5px">
-        <Button className="edit" onClick={handleClick}>
-          <EditSvg />
-          Edit
-        </Button>
-      </Flex>
+          <Flex justifyContent="flex-end" p="5px">
+            <Button className="edit" onClick={handleClick}>
+              <EditSvg />
+              Edit
+            </Button>
+          </Flex>
+        </>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 }
