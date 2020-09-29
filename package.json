@@ -18,6 +18,7 @@
     "react-markdown": "^4.3.1",
     "react-scripts": "3.4.3",
     "styled-components": "^5.2.0",
+    "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.5",
     "use-immer": "^0.4.1"
   },
