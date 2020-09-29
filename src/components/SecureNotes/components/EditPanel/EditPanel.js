@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
-import { faTimes, faSave, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import Box from 'common/Box';
-import Flex from 'common/Flex';
+import { CancelSvg, DeleteSvg, SaveSvg } from 'svg';
 import Button from 'common/Button';
+import Divider from 'common/Divider';
+import Flex from 'common/Flex';
+import TitleHighlight from 'common/TitleHighlight';
 import { SecureNotesContext } from '../../context';
-import { Textarea } from './Styled';
+import { Input, Textarea } from './Styled';
+
+const input = '# This is a header\n\nAnd this is a paragraph';
 
 function EditPanel() {
   const {
@@ -38,39 +39,37 @@ function EditPanel() {
   return (
     <>
       <Flex flexGrow="1" flexDirection="column">
-        <input type="text" placeholder="Title" defaultValue={selected?.title} />
-        <Textarea />
+        <Flex>
+          <TitleHighlight />
+          <Input
+            type="text"
+            placeholder="Title"
+            defaultValue={selected?.title}
+          />
+        </Flex>
+        <Divider />
+        <Textarea defaultValue={input} placeholder="Write your note here..." />
       </Flex>
 
-      <Flex justifyContent="space-between" borderTop="5px solid #666" p="5px">
-        <Button
-          type="button"
-          className="btn btn-outline-dark"
-          onClick={handleCancel}
-        >
-          <FontAwesomeIcon icon={faTimes} /> Cancel
+      <Flex justifyContent="space-between">
+        <Button className="cancel" onClick={handleCancel}>
+          <CancelSvg />
+          Cancel
         </Button>
 
-        <Box>
-          <Button
-            type="button"
-            className="btn btn-success"
-            onClick={handleSave}
-          >
-            <FontAwesomeIcon icon={faSave} /> Save
+        <Flex>
+          <Button className="save" onClick={handleSave}>
+            <SaveSvg />
+            Save
           </Button>
 
           {selected && (
-            <Button
-              type="button"
-              className="btn btn-danger"
-              ml="10px"
-              onClick={handleDelete}
-            >
-              <FontAwesomeIcon icon={faTrashAlt} /> Delete
+            <Button className="delete" ml="24px" onClick={handleDelete}>
+              <DeleteSvg />
+              Delete
             </Button>
           )}
-        </Box>
+        </Flex>
       </Flex>
     </>
   );

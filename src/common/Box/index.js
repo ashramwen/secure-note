@@ -14,14 +14,17 @@ const styleProps = compose(
   space,
   layout,
   border,
-
   color,
   background,
   position,
   shadow
 );
 
-const Box = styled('div')({ boxSizing: 'border-box' }, styleProps);
+const Box = styled.div`
+  box-sizing: border-box;
+
+  ${styleProps}
+`;
 
 Box.displayName = 'Box';
 

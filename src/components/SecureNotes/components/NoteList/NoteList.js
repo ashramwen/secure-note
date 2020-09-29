@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
+import { PlusSvg } from 'svg';
+import RoundedButton from 'common/RoundedButton';
 import Box from 'common/Box';
 import { SecureNotesContext } from '../../context';
 import { Item } from './Styled';
@@ -9,6 +11,12 @@ function NoteList() {
     state: { notes, selected, editMode },
     dispatch,
   } = useContext(SecureNotesContext);
+
+  const handleNewNote = () => {
+    dispatch({
+      type: 'newNote',
+    });
+  };
 
   const handleClick = (note) => {
     if (selected === note.id) {
@@ -25,13 +33,16 @@ function NoteList() {
   };
 
   return (
-    <Box width={1 / 2} border="5px solid #666">
+    <Box minWidth="25%" backgroundColor="#f5f6fa" p="60px">
+      <RoundedButton onClick={handleNewNote} disabled={editMode} mb="50px">
+        <PlusSvg />
+        New note
+      </RoundedButton>
+
       {notes.map((note) => (
         <Item
           className={classnames({ selected: selected?.id === note.id })}
           key={note.id}
-          borderBottom="2px solid #666"
-          p="5px"
           onClick={() => handleClick(note)}
         >
           {note.title}

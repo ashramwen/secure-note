@@ -1,4 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
+import { sapphireBlue } from './colors';
+import button from './button';
+import input from './input';
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -7,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: 'Arial', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -19,9 +22,16 @@ const GlobalStyle = createGlobalStyle`
       monospace;
   }
 
+  *, *::before, *::after{
+    color: ${sapphireBlue};
+  } 
+
   #root {
     height: 100%;
   }
+
+  ${button};
+  ${input};
 `;
 
 export default GlobalStyle;

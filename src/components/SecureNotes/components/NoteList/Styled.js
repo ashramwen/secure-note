@@ -1,11 +1,22 @@
 import styled from 'styled-components';
-import Box from 'common/Box';
+import Flex from 'common/Flex';
+import highlight from 'styles/highlight';
 
-export const Item = styled(Box)`
+export const Item = styled(Flex)`
+  position: relative;
   cursor: pointer;
+  align-items: center;
+  height: 20px;
+  padding-left: 20px;
+  margin: 12px 0;
 
   &.selected {
-    color: #004085;
-    background-color: #cce5ff;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+
+      ${highlight};
+    }
   }
 `;
