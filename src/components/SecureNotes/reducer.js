@@ -43,9 +43,13 @@ export function secureNotesReducer(state, action) {
       };
     }
 
-    // save a new note
-    case 'saveNewNote': {
-      const id = (state.notes[state.notes.length - 1]?.id ?? 0) + 1;
+    // save a note
+    case 'saveNote': {
+      const { selected, title, text } = action.payload;
+      const id = selected
+        ? selected.id
+        : (state.notes[state.notes.length - 1]?.id ?? 0) + 1;
+
       const nextState = {
         ...state,
         notes: [...state.notes, { id, title: action.payload }],

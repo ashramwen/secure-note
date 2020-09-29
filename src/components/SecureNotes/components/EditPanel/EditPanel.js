@@ -1,16 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CancelSvg, DeleteSvg, SaveSvg } from 'svg';
 import Button from 'common/Button';
 import Divider from 'common/Divider';
 import Flex from 'common/Flex';
 import { SecureNotesContext } from '../../context';
 import { Input, Textarea } from './Styled';
+import { encrypt } from 'utils';
 
 function EditPanel() {
-  const {
-    state: { selected, content },
-    dispatch,
-  } = useContext(SecureNotesContext);
+  const { state, dispatch } = useContext(SecureNotesContext);
+  const { selected, content } = state;
+
+  const [title, setTitle] = useState(selected?.title ?? '');
+  const [text, setText] = useState(content ?? '');
+
+  const handleInputChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
 
   const handleCancel = () => {
     dispatch({
@@ -19,11 +29,12 @@ function EditPanel() {
     });
   };
 
-  const handleSave = () => {
-    dispatch({
-      type: 'switchMode',
-      payload: false,
-    });
+  const handleSave = async () => {
+    const data = await encrypt(text);
+    // dispatch({
+    //   type: 'switchMode',
+    //   payload: { selected, title, text },
+    // });
   };
 
   const handleDelete = () => {
@@ -40,13 +51,15 @@ function EditPanel() {
           <Input
             type="text"
             placeholder="Title"
-            defaultValue={selected?.title}
+            value={title}
+            onChange={handleInputChange}
           />
         </Flex>
         <Divider />
         <Textarea
-          defaultValue={content ?? ''}
           placeholder="Write your note here..."
+          value={text}
+          onChange={handleTextChange}
         />
       </Flex>
 

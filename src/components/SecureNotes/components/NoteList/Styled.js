@@ -9,6 +9,7 @@ export const Item = styled(Flex)`
   height: 20px;
   padding-left: 20px;
   margin: 12px 0;
+  user-select: none;
 
   &.selected {
     &::before {

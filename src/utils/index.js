@@ -1,11 +1,6 @@
-import { mockContents } from 'mocks';
-
-export const wait = async (noteId) => {
+export const wait = async (delay) => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const { content } = mockContents.find(({ id }) => id === noteId);
-      resolve(content);
-    }, 500);
+    setTimeout(resolve, delay);
   });
 };
 

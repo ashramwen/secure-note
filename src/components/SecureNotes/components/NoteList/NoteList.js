@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import classnames from 'classnames';
-import { wait } from 'utils';
+import { decrypt } from 'utils';
 import { PlusSvg } from 'svg';
 import { lightGray } from 'styles/colors';
 import RoundedButton from 'common/RoundedButton';
 import Flex from 'common/Flex';
 import { SecureNotesContext } from '../../context';
 import { Item } from './Styled';
+import { mockContents } from 'mocks';
 
 function NoteList() {
   const { state, dispatch } = useContext(SecureNotesContext);
@@ -19,7 +20,7 @@ function NoteList() {
   };
 
   const handleClick = (note) => {
-    if (selected === note.id) {
+    if (selected?.id === note.id) {
       dispatch({
         type: 'selectNote',
         payload: null,
@@ -36,7 +37,9 @@ function NoteList() {
     let canceled = false;
 
     if (selected) {
-      wait(selected.id).then((res) => {
+      const { content } = mockContents.find(({ id }) => id === selected.id);
+
+      decrypt(content).then((res) => {
         if (!canceled) {
           dispatch({
             type: 'fetchContent',
