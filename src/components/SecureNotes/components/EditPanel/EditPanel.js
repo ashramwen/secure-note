@@ -3,6 +3,12 @@ import { CancelSvg, DeleteSvg, SaveSvg } from 'svg';
 import Button from 'common/Button';
 import Divider from 'common/Divider';
 import Flex from 'common/Flex';
+import {
+  SWITCH_MODE,
+  SAVE_NEW_NOTE,
+  UPDATE_NOTE,
+  SWITCH_SPINNER,
+} from '../../constant';
 import { SecureNotesContext } from '../../context';
 import { Input, Textarea } from './Styled';
 import { encrypt } from 'utils';
@@ -24,22 +30,40 @@ function EditPanel() {
 
   const handleCancel = () => {
     dispatch({
-      type: 'switchMode',
+      type: SWITCH_MODE,
       payload: false,
     });
   };
 
   const handleSave = async () => {
+    dispatch({
+      type: SWITCH_SPINNER,
+      payload: true,
+    });
+
     const data = await encrypt(text);
-    // dispatch({
-    //   type: 'switchMode',
-    //   payload: { selected, title, text },
-    // });
+
+    if (selected) {
+      dispatch({
+        type: UPDATE_NOTE,
+        payload: { title, content: data },
+      });
+    } else {
+      dispatch({
+        type: SAVE_NEW_NOTE,
+        payload: { title, content: data },
+      });
+    }
+
+    dispatch({
+      type: SWITCH_SPINNER,
+      payload: false,
+    });
   };
 
   const handleDelete = () => {
     dispatch({
-      type: 'switchMode',
+      type: SWITCH_MODE,
       payload: false,
     });
   };

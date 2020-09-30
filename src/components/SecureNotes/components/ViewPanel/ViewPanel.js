@@ -7,6 +7,7 @@ import Button from 'common/Button';
 import Divider from 'common/Divider';
 import Flex from 'common/Flex';
 import TitleHighlight from 'common/TitleHighlight';
+import { SWITCH_MODE } from '../../constant';
 import { SecureNotesContext } from '../../context';
 import Loading from '../Loading';
 
@@ -18,7 +19,7 @@ function ViewPanel() {
 
   const handleClick = () => {
     dispatch({
-      type: 'switchMode',
+      type: SWITCH_MODE,
       payload: true,
     });
   };

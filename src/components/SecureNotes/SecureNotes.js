@@ -6,10 +6,13 @@ import { secureNotesReducer, initialState } from './reducer';
 import Flex from 'common/Flex';
 import FuncPanel from './components/FuncPanel';
 import NoteList from './components/NoteList';
+import Loading from './components/Loading';
 
 function SecureNotes() {
   const [state, dispatch] = useImmerReducer(secureNotesReducer, initialState);
   const contextValue = { state, dispatch };
+
+  const { spinning } = state;
 
   return (
     <SecureNotesProvider value={contextValue}>
@@ -19,6 +22,9 @@ function SecureNotes() {
 
         {/* Right pane: View/Edit mode */}
         <FuncPanel />
+
+        {/* spinner */}
+        {spinning && <Loading overlay={true} absolute={true} />}
       </Flex>
     </SecureNotesProvider>
   );

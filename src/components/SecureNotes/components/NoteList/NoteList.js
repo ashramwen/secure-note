@@ -5,6 +5,7 @@ import { PlusSvg } from 'svg';
 import { lightGray } from 'styles/colors';
 import RoundedButton from 'common/RoundedButton';
 import Flex from 'common/Flex';
+import { SELECT_NOTE, DECIPHER, NEW_NOTE } from '../../constant';
 import { SecureNotesContext } from '../../context';
 import { Item } from './Styled';
 
@@ -14,19 +15,19 @@ function NoteList() {
 
   const handleNewNote = () => {
     dispatch({
-      type: 'newNote',
+      type: NEW_NOTE,
     });
   };
 
   const handleClick = (note) => {
     if (selected?.id === note.id) {
       dispatch({
-        type: 'selectNote',
+        type: SELECT_NOTE,
         payload: null,
       });
     } else if (!editMode) {
       dispatch({
-        type: 'selectNote',
+        type: SELECT_NOTE,
         payload: note,
       });
     }
@@ -36,11 +37,11 @@ function NoteList() {
     let canceled = false;
 
     if (selected) {
-      decrypt(selected.content).then((res) => {
+      decrypt(selected.content).then((data) => {
         if (!canceled) {
           dispatch({
-            type: 'decipher',
-            payload: res,
+            type: DECIPHER,
+            payload: data,
           });
         }
       });
