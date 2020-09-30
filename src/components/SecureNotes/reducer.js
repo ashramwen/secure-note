@@ -1,7 +1,7 @@
-import { mockList } from 'mocks';
+import { mockData } from 'mockData';
 
 export const initialState = {
-  notes: [...mockList],
+  notes: [...mockData],
   selected: null,
   editMode: false,
   content: null,
@@ -26,8 +26,8 @@ export function secureNotesReducer(state, action) {
       };
     }
 
-    // fetch note content
-    case 'fetchContent': {
+    // decipher content
+    case 'decipher': {
       return {
         ...state,
         content: action.payload,

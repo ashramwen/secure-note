@@ -7,7 +7,6 @@ import RoundedButton from 'common/RoundedButton';
 import Flex from 'common/Flex';
 import { SecureNotesContext } from '../../context';
 import { Item } from './Styled';
-import { mockContents } from 'mocks';
 
 function NoteList() {
   const { state, dispatch } = useContext(SecureNotesContext);
@@ -37,12 +36,10 @@ function NoteList() {
     let canceled = false;
 
     if (selected) {
-      const { content } = mockContents.find(({ id }) => id === selected.id);
-
-      decrypt(content).then((res) => {
+      decrypt(selected.content).then((res) => {
         if (!canceled) {
           dispatch({
-            type: 'fetchContent',
+            type: 'decipher',
             payload: res,
           });
         }
