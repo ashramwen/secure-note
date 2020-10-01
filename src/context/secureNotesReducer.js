@@ -57,11 +57,14 @@ export function secureNotesReducer(state, action) {
 
       const _title = title === '' ? 'Untitled' : title;
 
+      const newNote = { id, title: _title, content };
+
       return {
         ...state,
-        notes: [...state.notes, { id, title: _title, content }],
+        notes: [...state.notes, newNote],
+        selected: newNote,
         editMode: false,
-        content: null,
+        content: newNote.content,
       };
     }
 
@@ -72,15 +75,18 @@ export function secureNotesReducer(state, action) {
 
       const _title = title === '' ? 'Untitled' : title;
 
+      let nextSelected = null;
+
       const nextNotes = notes.map((note) => {
         // If note.id equals to the selected note.id, update it.
         // If not, just return it.
         if (note.id === selected.id) {
-          return {
+          nextSelected = {
             id: selected.id,
             title: _title,
             content,
           };
+          return nextSelected;
         }
 
         return note;
@@ -89,9 +95,9 @@ export function secureNotesReducer(state, action) {
       return {
         ...state,
         notes: nextNotes,
-        selected: null,
+        selected: nextSelected,
         editMode: false,
-        content: null,
+        content: nextSelected.content,
       };
     }
 
