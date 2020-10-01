@@ -11,6 +11,7 @@ const initialState = {
   editMode: false, // pane mode
   content: null, // decrypted content
   spinning: false, // indicates if the spinner displays
+  modal: false, // indicates if the confirmation modal displays
 };
 
 export const SecureNotesContext = createContext(null);

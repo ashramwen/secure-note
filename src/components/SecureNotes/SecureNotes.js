@@ -4,6 +4,7 @@ import { SecureNotesContext } from 'context/SecureNotesContext';
 import FuncPanel from './components/FuncPanel';
 import NoteList from './components/NoteList';
 import Loading from './components/Loading';
+import Confirmation from './components/Confirmation';
 
 function SecureNotes() {
   const { state } = useContext(SecureNotesContext);
@@ -19,6 +20,8 @@ function SecureNotes() {
 
       {/* spinner */}
       {spinning && <Loading overlay={true} absolute={true} />}
+
+      <Confirmation />
     </Flex>
   );
 }

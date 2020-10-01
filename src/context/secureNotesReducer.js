@@ -7,6 +7,7 @@ import {
   UPDATE_NOTE,
   DELETE_NOTE,
   SWITCH_SPINNER,
+  SWITCH_MODAL,
 } from './constant';
 
 export function secureNotesReducer(state, action) {
@@ -97,6 +98,7 @@ export function secureNotesReducer(state, action) {
         selected: null,
         editMode: false,
         content: null,
+        modal: false,
       };
     }
 
@@ -105,6 +107,14 @@ export function secureNotesReducer(state, action) {
       return {
         ...state,
         spinning: action.payload,
+      };
+    }
+
+    // switch confirmation modal
+    case SWITCH_MODAL: {
+      return {
+        ...state,
+        modal: action.payload,
       };
     }
 

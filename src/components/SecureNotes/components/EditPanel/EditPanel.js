@@ -8,8 +8,8 @@ import {
   SWITCH_MODE,
   SAVE_NEW_NOTE,
   UPDATE_NOTE,
-  DELETE_NOTE,
   SWITCH_SPINNER,
+  SWITCH_MODAL,
 } from 'context/constant';
 import { SecureNotesContext } from 'context/SecureNotesContext';
 import { Input, Textarea } from './Styled';
@@ -64,8 +64,8 @@ function EditPanel() {
 
   const handleDelete = () => {
     dispatch({
-      type: DELETE_NOTE,
-      payload: false,
+      type: SWITCH_MODAL,
+      payload: true,
     });
   };
 
