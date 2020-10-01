@@ -8,14 +8,14 @@ import Flex from 'common/Flex';
 import TitleHighlight from 'common/TitleHighlight';
 import { SWITCH_MODE } from 'context/constant';
 import { SecureNotesContext } from 'context/SecureNotesContext';
-import Loading from '../Loading';
 
 function ViewPanel() {
-  const {
-    state: { selected, content },
-    dispatch,
-  } = useContext(SecureNotesContext);
+  const { state, dispatch } = useContext(SecureNotesContext);
+  const { selected, content, editMode } = state;
 
+  /**
+   * Click Edit button
+   */
   const handleClick = () => {
     dispatch({
       type: SWITCH_MODE,
@@ -25,7 +25,7 @@ function ViewPanel() {
 
   return (
     <>
-      {content ? (
+      {selected && content && !editMode && (
         <>
           <Flex flexGrow="1" flexDirection="column">
             <Flex height="25px" alignItems="center">
@@ -47,8 +47,6 @@ function ViewPanel() {
             </Button>
           </Flex>
         </>
-      ) : (
-        <Loading />
       )}
     </>
   );

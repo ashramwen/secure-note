@@ -16,19 +16,30 @@ import { Input, Textarea } from './Styled';
 
 function EditPanel() {
   const { state, dispatch } = useContext(SecureNotesContext);
-  const { selected, content } = state;
+  const { selected, editMode, content } = state;
 
   const [title, setTitle] = useState(selected?.title ?? '');
   const [text, setText] = useState(content ?? '');
 
+  /**
+   * Handle input change event
+   * @param {Event} e Change event of input
+   */
   const handleInputChange = (e) => {
     setTitle(e.target.value);
   };
 
+  /**
+   * Handle textarea change event
+   * @param {Event} e Change event of textarea
+   */
   const handleTextChange = (e) => {
     setText(e.target.value);
   };
 
+  /**
+   * Click cancel button
+   */
   const handleCancel = () => {
     dispatch({
       type: SWITCH_MODE,
@@ -36,33 +47,45 @@ function EditPanel() {
     });
   };
 
+  /**
+   * Click save button
+   */
   const handleSave = async () => {
+    // Switch on the spinner
     dispatch({
       type: SWITCH_SPINNER,
       payload: true,
     });
 
+    // decrypt the content
     const data = await encrypt(text);
 
     if (selected) {
+      // Update the selected note if there is a selected note
       dispatch({
         type: UPDATE_NOTE,
         payload: { title, content: data },
       });
     } else {
+      // Save the new note
       dispatch({
         type: SAVE_NEW_NOTE,
         payload: { title, content: data },
       });
     }
 
+    // switch off the spinner
     dispatch({
       type: SWITCH_SPINNER,
       payload: false,
     });
   };
 
+  /**
+   * Click delete button
+   */
   const handleDelete = () => {
+    // Pop-up the confirmation modal
     dispatch({
       type: SWITCH_MODAL,
       payload: true,
@@ -71,43 +94,47 @@ function EditPanel() {
 
   return (
     <>
-      <Flex flexGrow="1" flexDirection="column">
-        <Flex>
-          <Input
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={handleInputChange}
-          />
-        </Flex>
-        <Divider />
-        <Textarea
-          placeholder="Write your note here..."
-          value={text}
-          onChange={handleTextChange}
-        />
-      </Flex>
+      {editMode && (
+        <>
+          <Flex flexGrow="1" flexDirection="column">
+            <Flex>
+              <Input
+                type="text"
+                placeholder="Title"
+                value={title}
+                onChange={handleInputChange}
+              />
+            </Flex>
+            <Divider />
+            <Textarea
+              placeholder="Write your note here..."
+              value={text}
+              onChange={handleTextChange}
+            />
+          </Flex>
 
-      <Flex justifyContent="space-between">
-        <Button className="cancel" onClick={handleCancel}>
-          <CancelSvg />
-          Cancel
-        </Button>
-
-        <Flex>
-          <Button className="save" onClick={handleSave}>
-            <SaveSvg />
-            Save
-          </Button>
-
-          {selected && (
-            <Button className="delete" ml="24px" onClick={handleDelete}>
-              <DeleteSvg />
-              Delete
+          <Flex justifyContent="space-between">
+            <Button className="cancel" onClick={handleCancel}>
+              <CancelSvg />
+              Cancel
             </Button>
-          )}
-        </Flex>
-      </Flex>
+
+            <Flex>
+              <Button className="save" onClick={handleSave}>
+                <SaveSvg />
+                Save
+              </Button>
+
+              {selected && (
+                <Button className="delete" ml="24px" onClick={handleDelete}>
+                  <DeleteSvg />
+                  Delete
+                </Button>
+              )}
+            </Flex>
+          </Flex>
+        </>
+      )}
     </>
   );
 }

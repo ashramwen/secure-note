@@ -3,15 +3,19 @@ import Flex from 'common/Flex';
 import { SecureNotesContext } from 'context/SecureNotesContext';
 import ViewPanel from '../ViewPanel';
 import EditPanel from '../EditPanel';
+import Loading from '../Loading';
 
 function FuncPanel() {
-  const {
-    state: { selected, editMode },
-  } = useContext(SecureNotesContext);
+  const { state } = useContext(SecureNotesContext);
+  const { selected, content } = state;
 
   return (
     <Flex flexGrow="1" flexDirection="column" p="60px" position="relative">
-      {editMode ? <EditPanel /> : selected ? <ViewPanel /> : null}
+      <EditPanel />
+
+      <ViewPanel />
+
+      {selected && !content && <Loading />}
     </Flex>
   );
 }

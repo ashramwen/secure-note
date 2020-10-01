@@ -6,7 +6,7 @@ import { secureNotesReducer } from './secureNotesReducer';
 
 const initialState = {
   // notes: [...mockData],
-  notes: [],
+  notes: [], // notes
   selected: null, // selected note
   editMode: false, // pane mode
   content: null, // decrypted content

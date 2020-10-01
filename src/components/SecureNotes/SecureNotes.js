@@ -15,12 +15,13 @@ function SecureNotes() {
       {/* Left pane: notes list */}
       <NoteList />
 
-      {/* Right pane: View/Edit mode */}
+      {/* Right pane: View/Edit mode panel */}
       <FuncPanel />
 
       {/* spinner */}
       {spinning && <Loading overlay={true} absolute={true} />}
 
+      {/* deleting confirmation modal */}
       <Confirmation />
     </Flex>
   );

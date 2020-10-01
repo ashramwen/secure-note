@@ -14,12 +14,18 @@ function Confirmation() {
     dispatch,
   } = useContext(SecureNotesContext);
 
+  /**
+   * Click delete button
+   */
   const handleDelete = () => {
     dispatch({
       type: DELETE_NOTE,
     });
   };
 
+  /**
+   * Click cancel button
+   */
   const handleCancel = () => {
     dispatch({
       type: SWITCH_MODAL,

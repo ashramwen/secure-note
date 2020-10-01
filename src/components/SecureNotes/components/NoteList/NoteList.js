@@ -13,19 +13,28 @@ function NoteList() {
   const { state, dispatch } = useContext(SecureNotesContext);
   const { notes, selected, editMode } = state;
 
+  /**
+   * Click the new note button
+   */
   const handleNewNote = () => {
     dispatch({
       type: NEW_NOTE,
     });
   };
 
+  /**
+   * Select a existent note
+   * @param {Object} note A selected note
+   */
   const handleClick = (note) => {
     if (selected?.id === note.id) {
+      // Unselect the selected note
       dispatch({
         type: SELECT_NOTE,
         payload: null,
       });
     } else if (!editMode) {
+      // Select a note
       dispatch({
         type: SELECT_NOTE,
         payload: note,
@@ -37,6 +46,7 @@ function NoteList() {
     let canceled = false;
 
     if (selected) {
+      // decrypt the content of the selected note
       decrypt(selected.content).then((data) => {
         if (!canceled) {
           dispatch({
