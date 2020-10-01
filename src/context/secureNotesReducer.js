@@ -55,9 +55,11 @@ export function secureNotesReducer(state, action) {
       // If there is no note, the new id will be 0.
       const id = (state.notes[state.notes.length - 1]?.id ?? 0) + 1;
 
+      const _title = title === '' ? 'Untitled' : title;
+
       return {
         ...state,
-        notes: [...state.notes, { id, title, content }],
+        notes: [...state.notes, { id, title: _title, content }],
         editMode: false,
         content: null,
       };
@@ -68,13 +70,15 @@ export function secureNotesReducer(state, action) {
       const { notes, selected } = state;
       const { title, content } = action.payload;
 
+      const _title = title === '' ? 'Untitled' : title;
+
       const nextNotes = notes.map((note) => {
         // If note.id equals to the selected note.id, update it.
         // If not, just return it.
         if (note.id === selected.id) {
           return {
             id: selected.id,
-            title,
+            title: _title,
             content,
           };
         }

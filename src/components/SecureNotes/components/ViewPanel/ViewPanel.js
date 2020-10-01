@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { isNil } from 'utils/isNil';
 import { EditSvg } from 'svg';
 import Box from 'common/Box';
 import Button from 'common/Button';
@@ -28,7 +29,7 @@ function ViewPanel() {
 
   return (
     <>
-      {selected && content && !editMode && (
+      {selected && !isNil(content) && !editMode && (
         <>
           <Flex flexGrow="1" flexDirection="column">
             <Flex height="25px" alignItems="center">

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { isNil } from 'utils/isNil';
 import Flex from 'common/Flex';
 import { SecureNotesContext } from 'context/SecureNotesContext';
 import ViewPanel from '../ViewPanel';
@@ -18,7 +19,7 @@ function FuncPanel() {
 
       <ViewPanel />
 
-      {selected && !content && <Loading />}
+      {selected && isNil(content) && <Loading />}
     </Flex>
   );
 }
