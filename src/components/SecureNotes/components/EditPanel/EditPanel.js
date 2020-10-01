@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { encrypt } from 'utils';
 import { CancelSvg, DeleteSvg, SaveSvg } from 'svg';
 import Button from 'common/Button';
 import Divider from 'common/Divider';
@@ -9,10 +10,9 @@ import {
   UPDATE_NOTE,
   DELETE_NOTE,
   SWITCH_SPINNER,
-} from '../../constant';
-import { SecureNotesContext } from '../../context';
+} from 'context/constant';
+import { SecureNotesContext } from 'context/SecureNotesContext';
 import { Input, Textarea } from './Styled';
-import { encrypt } from 'utils';
 
 function EditPanel() {
   const { state, dispatch } = useContext(SecureNotesContext);

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Flex from 'common/Flex';
-import { SecureNotesContext } from '../../context';
+import { SecureNotesContext } from 'context/SecureNotesContext';
 import ViewPanel from '../ViewPanel';
 import EditPanel from '../EditPanel';
 

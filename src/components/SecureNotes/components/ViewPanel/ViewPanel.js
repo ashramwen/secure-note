@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
-
 import { EditSvg } from 'svg';
 import Box from 'common/Box';
 import Button from 'common/Button';
 import Divider from 'common/Divider';
 import Flex from 'common/Flex';
 import TitleHighlight from 'common/TitleHighlight';
-import { SWITCH_MODE } from '../../constant';
-import { SecureNotesContext } from '../../context';
+import { SWITCH_MODE } from 'context/constant';
+import { SecureNotesContext } from 'context/SecureNotesContext';
 import Loading from '../Loading';
 
 function ViewPanel() {

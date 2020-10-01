@@ -5,8 +5,8 @@ import { PlusSvg } from 'svg';
 import { lightGray } from 'styles/colors';
 import RoundedButton from 'common/RoundedButton';
 import Flex from 'common/Flex';
-import { SELECT_NOTE, DECIPHER, NEW_NOTE } from '../../constant';
-import { SecureNotesContext } from '../../context';
+import { SELECT_NOTE, DECIPHER, NEW_NOTE } from 'context/constant';
+import { SecureNotesContext } from 'context/SecureNotesContext';
 import { Item } from './Styled';
 
 function NoteList() {

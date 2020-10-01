@@ -1,5 +1,3 @@
-// import { mockData } from 'mockData';
-
 import {
   SWITCH_MODE,
   SELECT_NOTE,
@@ -10,15 +8,6 @@ import {
   DELETE_NOTE,
   SWITCH_SPINNER,
 } from './constant';
-
-export const initialState = {
-  // notes: [...mockData],
-  notes: [],
-  selected: null, // selected note
-  editMode: false, // pane mode
-  content: null, // decrypted content
-  spinning: false, // indicates if the spinner displays
-};
 
 export function secureNotesReducer(state, action) {
   switch (action.type) {
