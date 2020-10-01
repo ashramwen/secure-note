@@ -8,6 +8,9 @@ import { DELETE_NOTE, SWITCH_MODAL } from 'context/constant';
 import { SecureNotesContext } from 'context/SecureNotesContext';
 import { CloseButton } from './Styled';
 
+/**
+ * Deleting confirmation
+ */
 function Confirmation() {
   const {
     state: { modal },

@@ -9,6 +9,9 @@ import TitleHighlight from 'common/TitleHighlight';
 import { SWITCH_MODE } from 'context/constant';
 import { SecureNotesContext } from 'context/SecureNotesContext';
 
+/**
+ * View mode panel
+ */
 function ViewPanel() {
   const { state, dispatch } = useContext(SecureNotesContext);
   const { selected, content, editMode } = state;

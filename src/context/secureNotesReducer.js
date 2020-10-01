@@ -50,6 +50,9 @@ export function secureNotesReducer(state, action) {
     // save a new note
     case SAVE_NEW_NOTE: {
       const { title, content } = action.payload;
+
+      // Increase one to the last note's id and let it be the new note's id.
+      // If there is no note, the new id will be 0.
       const id = (state.notes[state.notes.length - 1]?.id ?? 0) + 1;
 
       return {
@@ -64,7 +67,10 @@ export function secureNotesReducer(state, action) {
     case UPDATE_NOTE: {
       const { notes, selected } = state;
       const { title, content } = action.payload;
+
       const nextNotes = notes.map((note) => {
+        // If note.id equals to the selected note.id, update it.
+        // If not, just return it.
         if (note.id === selected.id) {
           return {
             id: selected.id,
@@ -88,7 +94,10 @@ export function secureNotesReducer(state, action) {
     // delete a note
     case DELETE_NOTE: {
       const { notes, selected } = state;
+
       const nextNotes = notes.reduce((acc, cur) => {
+        // If cur.id equals to the selected note.id, do nothing.
+        // Otherwise add the cur note to the new notes.
         return cur.id === selected.id ? acc : [...acc, cur];
       }, []);
 

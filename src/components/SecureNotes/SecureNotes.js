@@ -6,6 +6,9 @@ import NoteList from './components/NoteList';
 import Loading from './components/Loading';
 import Confirmation from './components/Confirmation';
 
+/**
+ * Secure notes
+ */
 function SecureNotes() {
   const { state } = useContext(SecureNotesContext);
   const { spinning } = state;

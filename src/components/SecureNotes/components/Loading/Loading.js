@@ -2,6 +2,9 @@ import React from 'react';
 import Flex from 'common/Flex';
 import Spinner from 'common/Spinner';
 
+/**
+ * Loading spinner
+ */
 function Loading({ overlay, absolute }) {
   return (
     <Flex

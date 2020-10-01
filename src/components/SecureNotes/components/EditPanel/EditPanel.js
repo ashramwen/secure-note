@@ -14,6 +14,9 @@ import {
 import { SecureNotesContext } from 'context/SecureNotesContext';
 import { Input, Textarea } from './Styled';
 
+/**
+ * Edit mode panel
+ */
 function EditPanel() {
   const { state, dispatch } = useContext(SecureNotesContext);
   const { selected, editMode, content } = state;

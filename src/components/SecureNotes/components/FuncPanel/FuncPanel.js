@@ -5,6 +5,9 @@ import ViewPanel from '../ViewPanel';
 import EditPanel from '../EditPanel';
 import Loading from '../Loading';
 
+/**
+ * FuncPanel (Right pane)
+ */
 function FuncPanel() {
   const { state } = useContext(SecureNotesContext);
   const { selected, content } = state;

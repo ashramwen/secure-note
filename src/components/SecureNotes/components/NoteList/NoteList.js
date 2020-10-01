@@ -9,6 +9,9 @@ import { SELECT_NOTE, DECIPHER, NEW_NOTE } from 'context/constant';
 import { SecureNotesContext } from 'context/SecureNotesContext';
 import { Item } from './Styled';
 
+/**
+ * All notes list
+ */
 function NoteList() {
   const { state, dispatch } = useContext(SecureNotesContext);
   const { notes, selected, editMode } = state;
@@ -46,9 +49,10 @@ function NoteList() {
     let canceled = false;
 
     if (selected) {
-      // decrypt the content of the selected note
+      // Decrypt the content of the selected note
       decrypt(selected.content).then((data) => {
         if (!canceled) {
+          // If it has canceled, do not update the decrypted content.
           dispatch({
             type: DECIPHER,
             payload: data,
@@ -58,6 +62,7 @@ function NoteList() {
     }
 
     return () => {
+      // If it has been destroyed, turn `canceled` to true
       canceled = true;
     };
   }, [dispatch, selected]);
