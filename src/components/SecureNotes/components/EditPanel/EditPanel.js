@@ -7,6 +7,7 @@ import {
   SWITCH_MODE,
   SAVE_NEW_NOTE,
   UPDATE_NOTE,
+  DELETE_NOTE,
   SWITCH_SPINNER,
 } from '../../constant';
 import { SecureNotesContext } from '../../context';
@@ -63,7 +64,7 @@ function EditPanel() {
 
   const handleDelete = () => {
     dispatch({
-      type: SWITCH_MODE,
+      type: DELETE_NOTE,
       payload: false,
     });
   };
