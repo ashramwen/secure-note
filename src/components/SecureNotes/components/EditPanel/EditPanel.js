@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { encrypt } from 'utils';
 import { CancelSvg, DeleteSvg, SaveSvg } from 'svg';
 import Button from 'common/Button';
@@ -94,6 +94,13 @@ function EditPanel() {
       payload: true,
     });
   };
+
+  useEffect(() => {
+    // If the selected note, the decrypted content or editMode changes,
+    // update input and textarea.
+    setTitle(selected?.title ?? '');
+    setText(content ?? '');
+  }, [selected, content, editMode]);
 
   return (
     <>
