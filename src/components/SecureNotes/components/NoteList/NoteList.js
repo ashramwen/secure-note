@@ -80,7 +80,7 @@ function NoteList() {
       </RoundedButton>
 
       <Flex flexDirection="column" overflowY="auto" pb="60px">
-        {notes.map((note) => (
+        {notes?.map((note) => (
           <Item
             className={classnames({ selected: selected?.id === note.id })}
             key={note.id}

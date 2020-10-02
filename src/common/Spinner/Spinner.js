@@ -15,7 +15,7 @@ function Spinner({ overlay, absolute }) {
       width="100%"
     >
       <Wrapper>
-        <SpinnerSvg />
+        <SpinnerSvg aria-label="spinner" />
       </Wrapper>
     </Flex>
   );
