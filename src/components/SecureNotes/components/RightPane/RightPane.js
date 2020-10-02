@@ -7,9 +7,9 @@ import ViewPanel from '../ViewPanel';
 import EditPanel from '../EditPanel';
 
 /**
- * FuncPanel (Right pane)
+ * RightPane (Right pane)
  */
-function FuncPanel() {
+function RightPane() {
   const { state } = useContext(SecureNotesContext);
   const { selected, content } = state;
 
@@ -24,4 +24,4 @@ function FuncPanel() {
   );
 }
 
-export default FuncPanel;
+export default RightPane;

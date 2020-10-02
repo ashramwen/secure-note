@@ -11,6 +11,8 @@ import {
 } from './constant';
 
 export function secureNotesReducer(state, action) {
+  console.log('secureNotesReducer -> action.type', action);
+
   switch (action.type) {
     // switch panel mode
     case SWITCH_MODE: {

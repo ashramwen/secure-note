@@ -14,7 +14,7 @@ const initialState = {
   modal: false, // indicates if the confirmation modal displays
 };
 
-export const SecureNotesContext = createContext(null);
+export const SecureNotesContext = createContext({});
 
 export const SecureNotesProvider = ({ children }) => {
   const [state, dispatch] = useImmerReducer(secureNotesReducer, initialState);

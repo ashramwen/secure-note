@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Flex from 'common/Flex';
 import Spinner from 'common/Spinner';
 import { SecureNotesContext } from 'context/SecureNotesContext';
-import FuncPanel from './components/FuncPanel';
+import RightPane from './components/RightPane';
 import NoteList from './components/NoteList';
 import Confirmation from './components/Confirmation';
 
@@ -19,7 +19,7 @@ function SecureNotes() {
       <NoteList />
 
       {/* Right pane: View/Edit mode panel */}
-      <FuncPanel />
+      <RightPane />
 
       {/* spinner */}
       {spinning && <Spinner overlay={true} absolute={true} />}
