@@ -111,12 +111,14 @@ function EditPanel() {
               <Input
                 type="text"
                 placeholder="Title"
+                aria-label="title"
                 value={title}
                 onChange={handleInputChange}
               />
             </Flex>
             <Divider />
             <Textarea
+              aria-label="content"
               placeholder="Write your note here..."
               value={text}
               onChange={handleTextChange}

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { isNil } from 'utils/isNil';
 import Flex from 'common/Flex';
+import Spinner from 'common/Spinner';
 import { SecureNotesContext } from 'context/SecureNotesContext';
 import ViewPanel from '../ViewPanel';
 import EditPanel from '../EditPanel';
-import Loading from '../Loading';
 
 /**
  * FuncPanel (Right pane)
@@ -19,7 +19,7 @@ function FuncPanel() {
 
       <ViewPanel />
 
-      {selected && isNil(content) && <Loading />}
+      {selected && isNil(content) && <Spinner />}
     </Flex>
   );
 }

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import Flex from 'common/Flex';
+import Spinner from 'common/Spinner';
 import { SecureNotesContext } from 'context/SecureNotesContext';
 import FuncPanel from './components/FuncPanel';
 import NoteList from './components/NoteList';
-import Loading from './components/Loading';
 import Confirmation from './components/Confirmation';
 
 /**
@@ -22,7 +22,7 @@ function SecureNotes() {
       <FuncPanel />
 
       {/* spinner */}
-      {spinning && <Loading overlay={true} absolute={true} />}
+      {spinning && <Spinner overlay={true} absolute={true} />}
 
       {/* deleting confirmation modal */}
       <Confirmation />
