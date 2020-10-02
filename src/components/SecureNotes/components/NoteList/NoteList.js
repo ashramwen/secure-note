@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import classnames from 'classnames';
 import { decrypt } from 'utils';
+import PromiseGuard from 'utils/PromiseGuard';
 import { PlusSvg } from 'svg';
 import { lightGray } from 'styles/colors';
 import RoundedButton from 'common/RoundedButton';
@@ -8,6 +9,8 @@ import Flex from 'common/Flex';
 import { SELECT_NOTE, DECIPHER, NEW_NOTE } from 'context/constant';
 import { SecureNotesContext } from 'context/SecureNotesContext';
 import { Item } from './Styled';
+
+const promiseGuard = new PromiseGuard();
 
 /**
  * All notes list
@@ -45,27 +48,24 @@ function NoteList() {
     }
   };
 
-  useEffect(() => {
-    let canceled = false;
-
-    if (selected) {
-      // Decrypt the content of the selected note
-      decrypt(selected.content).then((data) => {
-        if (!canceled) {
-          // If it has canceled, do not update the decrypted content.
-          dispatch({
-            type: DECIPHER,
-            payload: data,
-          });
-        }
+  /**
+   * Decrypt content
+   */
+  const decrypting = useCallback(
+    async (content) => {
+      const data = await promiseGuard.getPromise(decrypt(content));
+      dispatch({
+        type: DECIPHER,
+        payload: data,
       });
-    }
+    },
+    [dispatch]
+  );
 
-    return () => {
-      // If it has been destroyed, turn `canceled` to true
-      canceled = true;
-    };
-  }, [dispatch, selected]);
+  useEffect(() => {
+    // Decrypt when selecting a note
+    selected && decrypting(selected.content);
+  }, [selected, decrypting]);
 
   return (
     <Flex
