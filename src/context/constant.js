@@ -11,7 +11,7 @@ export const SELECT_NOTE = 'selectNote';
 /**
  * Decrypt the content
  */
-export const DECIPHER = 'decipher';
+export const DECRYPT = 'decrypt';
 
 /**
  * Create a new note

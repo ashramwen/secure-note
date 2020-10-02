@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { decrypt } from 'utils';
 import PromiseGuard from 'utils/PromiseGuard';
@@ -6,7 +6,7 @@ import { PlusSvg } from 'svg';
 import { lightGray } from 'styles/colors';
 import RoundedButton from 'common/RoundedButton';
 import Flex from 'common/Flex';
-import { SELECT_NOTE, DECIPHER, NEW_NOTE } from 'context/constant';
+import { SELECT_NOTE, DECRYPT, NEW_NOTE } from 'context/constant';
 import { SecureNotesContext } from 'context/SecureNotesContext';
 import { Item } from './Styled';
 
@@ -45,27 +45,22 @@ function NoteList() {
         type: SELECT_NOTE,
         payload: note,
       });
+
+      // Decrypt the selected content
+      decrypting(note.content);
     }
   };
 
   /**
    * Decrypt content
    */
-  const decrypting = useCallback(
-    async (content) => {
-      const data = await promiseGuard.getPromise(decrypt(content));
-      dispatch({
-        type: DECIPHER,
-        payload: data,
-      });
-    },
-    [dispatch]
-  );
-
-  useEffect(() => {
-    // Decrypt when selecting a note
-    selected && decrypting(selected.content);
-  }, [selected, decrypting]);
+  const decrypting = async (content) => {
+    const data = await promiseGuard.getPromise(decrypt(content));
+    dispatch({
+      type: DECRYPT,
+      payload: data,
+    });
+  };
 
   return (
     <Flex

@@ -9,7 +9,7 @@ import EditPanel from '.';
 const state = {
   selected: mockData[0],
   editMode: true,
-  content: mockData[0].content,
+  plainText: mockData[0].content,
 };
 
 const setup = () => {

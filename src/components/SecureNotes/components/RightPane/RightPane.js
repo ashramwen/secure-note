@@ -11,7 +11,7 @@ import EditPanel from '../EditPanel';
  */
 function RightPane() {
   const { state } = useContext(SecureNotesContext);
-  const { selected, content } = state;
+  const { selected, plainText } = state;
 
   return (
     <Flex flexGrow="1" flexDirection="column" p="60px" position="relative">
@@ -19,7 +19,7 @@ function RightPane() {
 
       <ViewPanel />
 
-      {selected && isNil(content) && <Spinner />}
+      {selected && isNil(plainText) && <Spinner />}
     </Flex>
   );
 }

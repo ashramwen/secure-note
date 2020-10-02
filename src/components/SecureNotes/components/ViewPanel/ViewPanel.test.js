@@ -9,7 +9,7 @@ import ViewPanel from '.';
 const state = {
   selected: mockData[0],
   editMode: false,
-  content: mockData[0].content,
+  plainText: mockData[0].content,
 };
 
 test('Test <ViewPanel />', () => {

@@ -15,7 +15,7 @@ import { SecureNotesContext } from 'context/SecureNotesContext';
  */
 function ViewPanel() {
   const { state, dispatch } = useContext(SecureNotesContext);
-  const { selected, content, editMode } = state;
+  const { selected, plainText, editMode } = state;
 
   /**
    * Click Edit button
@@ -29,7 +29,7 @@ function ViewPanel() {
 
   return (
     <>
-      {selected && !isNil(content) && !editMode && (
+      {selected && !isNil(plainText) && !editMode && (
         <>
           <Flex flexGrow="1" flexDirection="column">
             <Flex height="25px" alignItems="center">
@@ -40,7 +40,7 @@ function ViewPanel() {
             </Flex>
             <Divider />
             <Box>
-              <ReactMarkdown source={content} />
+              <ReactMarkdown source={plainText} />
             </Box>
           </Flex>
 

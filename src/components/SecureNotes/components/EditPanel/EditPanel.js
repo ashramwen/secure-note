@@ -19,10 +19,10 @@ import { Input, Textarea } from './Styled';
  */
 function EditPanel() {
   const { state, dispatch } = useContext(SecureNotesContext);
-  const { selected, editMode, content } = state;
+  const { selected, editMode, plainText } = state;
 
   const [title, setTitle] = useState(selected?.title ?? '');
-  const [text, setText] = useState(content ?? '');
+  const [text, setText] = useState(plainText ?? '');
 
   /**
    * Handle input change event
@@ -63,17 +63,23 @@ function EditPanel() {
     // decrypt the content
     const data = await encrypt(text);
 
+    const payload = {
+      title: title === '' ? 'Untitled' : title,
+      content: data,
+      plainText: text,
+    };
+
     if (selected) {
       // Update the selected note if there is a selected note
       dispatch({
         type: UPDATE_NOTE,
-        payload: { title, content: data },
+        payload,
       });
     } else {
       // Save the new note
       dispatch({
         type: SAVE_NEW_NOTE,
-        payload: { title, content: data },
+        payload,
       });
     }
 
@@ -96,11 +102,12 @@ function EditPanel() {
   };
 
   useEffect(() => {
-    // If the selected note, the decrypted content or editMode changes,
-    // update input and textarea.
-    setTitle(selected?.title ?? '');
-    setText(content ?? '');
-  }, [selected, content, editMode]);
+    // If editMode changes, update input and textarea.
+    if (editMode) {
+      setTitle(selected?.title ?? '');
+      setText(plainText ?? '');
+    }
+  }, [selected, plainText, editMode]);
 
   return (
     <>

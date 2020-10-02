@@ -12,7 +12,7 @@ export default class PromiseGuard {
       if (this.#lastPromise === currentPromise) {
         return response;
       }
-      return;
+      return new Promise(() => null);
     };
   }
 }

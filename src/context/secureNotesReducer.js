@@ -1,7 +1,7 @@
 import {
   SWITCH_MODE,
   SELECT_NOTE,
-  DECIPHER,
+  DECRYPT,
   NEW_NOTE,
   SAVE_NEW_NOTE,
   UPDATE_NOTE,
@@ -11,8 +11,6 @@ import {
 } from './constant';
 
 export function secureNotesReducer(state, action) {
-  console.log('secureNotesReducer -> action.type', action);
-
   switch (action.type) {
     // switch panel mode
     case SWITCH_MODE: {
@@ -27,15 +25,15 @@ export function secureNotesReducer(state, action) {
       return {
         ...state,
         selected: action.payload,
-        content: null,
+        plainText: null,
       };
     }
 
-    // decipher content
-    case DECIPHER: {
+    // decrypt content
+    case DECRYPT: {
       return {
         ...state,
-        content: action.payload,
+        plainText: action.payload,
       };
     }
 
@@ -45,37 +43,33 @@ export function secureNotesReducer(state, action) {
         ...state,
         selected: null,
         editMode: true,
-        content: null,
+        plainText: null,
       };
     }
 
     // save a new note
     case SAVE_NEW_NOTE: {
-      const { title, content } = action.payload;
+      const { title, content, plainText } = action.payload;
 
       // Increase one to the last note's id and let it be the new note's id.
       // If there is no note, the new id will be 0.
       const id = (state.notes[state.notes.length - 1]?.id ?? 0) + 1;
 
-      const _title = title === '' ? 'Untitled' : title;
-
-      const newNote = { id, title: _title, content };
+      const newNote = { id, title, content };
 
       return {
         ...state,
         notes: [...state.notes, newNote],
         selected: newNote,
         editMode: false,
-        content: newNote.content,
+        plainText,
       };
     }
 
     // update an existent note
     case UPDATE_NOTE: {
       const { notes, selected } = state;
-      const { title, content } = action.payload;
-
-      const _title = title === '' ? 'Untitled' : title;
+      const { title, content, plainText } = action.payload;
 
       let nextSelected = null;
 
@@ -85,7 +79,7 @@ export function secureNotesReducer(state, action) {
         if (note.id === selected.id) {
           nextSelected = {
             id: selected.id,
-            title: _title,
+            title,
             content,
           };
           return nextSelected;
@@ -99,7 +93,7 @@ export function secureNotesReducer(state, action) {
         notes: nextNotes,
         selected: nextSelected,
         editMode: false,
-        content: nextSelected.content,
+        plainText,
       };
     }
 
@@ -118,7 +112,7 @@ export function secureNotesReducer(state, action) {
         notes: nextNotes,
         selected: null,
         editMode: false,
-        content: null,
+        plainText: null,
         modal: false,
       };
     }
