@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Flex from 'common/Flex';
 import { SpinnerSvg } from 'svg';
 import { Wrapper } from './Styled';
@@ -20,5 +21,15 @@ function Spinner({ overlay, absolute }) {
     </Flex>
   );
 }
+
+Spinner.propTypes = {
+  overlay: PropTypes.bool,
+  absolute: PropTypes.bool,
+};
+
+Spinner.defaultProps = {
+  overlay: false,
+  absolute: false,
+};
 
 export default Spinner;
