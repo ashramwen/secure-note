@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/secure-note/static/js/main.ca9caa8d.chunk.js",
-    "main.js.map": "/secure-note/static/js/main.ca9caa8d.chunk.js.map",
+    "main.js": "/secure-note/static/js/main.6a1e8386.chunk.js",
+    "main.js.map": "/secure-note/static/js/main.6a1e8386.chunk.js.map",
     "runtime-main.js": "/secure-note/static/js/runtime-main.bd02a73f.js",
     "runtime-main.js.map": "/secure-note/static/js/runtime-main.bd02a73f.js.map",
     "static/js/2.99b5e6e0.chunk.js": "/secure-note/static/js/2.99b5e6e0.chunk.js",
     "static/js/2.99b5e6e0.chunk.js.map": "/secure-note/static/js/2.99b5e6e0.chunk.js.map",
     "index.html": "/secure-note/index.html",
-    "precache-manifest.6d00a38229792d1b7fe387611e6cd3b2.js": "/secure-note/precache-manifest.6d00a38229792d1b7fe387611e6cd3b2.js",
+    "precache-manifest.79f06f6785f1dee8d6d12096cda37224.js": "/secure-note/precache-manifest.79f06f6785f1dee8d6d12096cda37224.js",
     "service-worker.js": "/secure-note/service-worker.js",
     "static/js/2.99b5e6e0.chunk.js.LICENSE.txt": "/secure-note/static/js/2.99b5e6e0.chunk.js.LICENSE.txt",
     "static/media/cancel.37465d67.svg": "/secure-note/static/media/cancel.37465d67.svg",
@@ -22,6 +22,6 @@
   "entrypoints": [
     "static/js/runtime-main.bd02a73f.js",
     "static/js/2.99b5e6e0.chunk.js",
-    "static/js/main.ca9caa8d.chunk.js"
+    "static/js/main.6a1e8386.chunk.js"
   ]
 }
