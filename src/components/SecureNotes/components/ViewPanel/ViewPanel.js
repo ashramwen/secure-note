@@ -34,13 +34,13 @@ function ViewPanel() {
           <Flex flexGrow="1" flexDirection="column">
             <Flex height="25px" alignItems="center">
               <TitleHighlight />
-              <Box fontSize="20px" p="1px 0 1px 2px">
+              <Box className="ellipsis" fontSize="20px" p="1px 0 1px 2px">
                 {selected.title}
               </Box>
             </Flex>
             <Divider />
             <Box>
-              <ReactMarkdown source={plainText} />
+              <ReactMarkdown className="wrap" source={plainText} />
             </Box>
           </Flex>
 

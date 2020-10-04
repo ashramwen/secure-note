@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { space } from 'styled-system';
+import { layout, space } from 'styled-system';
 import { blue, gray, white } from 'styles/colors';
 
 const RoundedButton = styled.button`
@@ -17,16 +17,16 @@ const RoundedButton = styled.button`
   }
 
   &:disabled {
-    color: ${white};
-    background-color: ${gray};
+    color: ${gray};
     box-shadow: none;
 
     svg {
-      fill: ${white};
+      fill: ${gray};
     }
   }
 
-  ${space}
+  ${space};
+  ${layout};
 `;
 
 RoundedButton.displayName = 'RoundedButton';

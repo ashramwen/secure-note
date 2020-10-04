@@ -33,14 +33,7 @@ function NoteList() {
    * @param {Object} note A selected note
    */
   const handleClick = (note) => {
-    if (selected?.id === note.id) {
-      // Unselect the selected note
-      dispatch({
-        type: SELECT_NOTE,
-        payload: null,
-      });
-    } else if (!editMode) {
-      // Select a note
+    if (selected?.id !== note.id && !editMode) {
       dispatch({
         type: SELECT_NOTE,
         payload: note,
@@ -65,6 +58,7 @@ function NoteList() {
   return (
     <Flex
       backgroundColor={lightGray}
+      maxWidth="30%"
       pt="60px"
       pl="60px"
       flexDirection="column"
@@ -74,6 +68,8 @@ function NoteList() {
         disabled={editMode}
         mr="60px"
         mb="50px"
+        width="128px"
+        height="48px"
       >
         <PlusSvg />
         New note
@@ -86,7 +82,7 @@ function NoteList() {
             key={note.id}
             onClick={() => handleClick(note)}
           >
-            {note.title}
+            <span className="ellipsis">{note.title}</span>
           </Item>
         ))}
       </Flex>

@@ -14,7 +14,13 @@ function RightPane() {
   const { selected, plainText } = state;
 
   return (
-    <Flex flexGrow="1" flexDirection="column" p="60px" position="relative">
+    <Flex
+      minWidth="70%"
+      flexGrow="1"
+      flexDirection="column"
+      p="60px"
+      position="relative"
+    >
       <EditPanel />
 
       <ViewPanel />

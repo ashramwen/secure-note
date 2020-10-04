@@ -30,6 +30,16 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 
+  .ellipsis{
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .wrap{
+    overflow-wrap: break-word;
+  }
+
   ${button};
   ${input};
 `;

@@ -7,7 +7,7 @@ export const Item = styled(Flex)`
   cursor: pointer;
   align-items: center;
   height: 20px;
-  padding-left: 20px;
+  padding: 0 20px;
   margin: 12px 0;
   user-select: none;
 

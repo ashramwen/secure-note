@@ -6,8 +6,13 @@ export default css`
     align-items: center;
     cursor: pointer;
     border: none;
+
     &:focus {
       outline: none;
+    }
+
+    &:disabled {
+      cursor: default;
     }
 
     svg {
