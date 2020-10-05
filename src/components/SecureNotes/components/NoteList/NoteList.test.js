@@ -28,5 +28,7 @@ test('Test <NoteList />', () => {
   });
 
   // selected note
-  expect(screen.getByText(mockData[0].title)).toHaveClass('selected');
+  expect(screen.getByText(mockData[0].title).closest('div')).toHaveClass(
+    'selected'
+  );
 });
