@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { isNil } from 'utils/isNil';
-import { EditSvg } from 'svg';
+import { DeleteSvg, EditSvg } from 'svg';
 import Box from 'common/Box';
 import Button from 'common/Button';
 import Divider from 'common/Divider';
 import Flex from 'common/Flex';
 import TitleHighlight from 'common/TitleHighlight';
-import { SWITCH_MODE } from 'context/constant';
+import { SWITCH_MODAL, SWITCH_MODE } from 'context/constant';
 import { SecureNotesContext } from 'context/SecureNotesContext';
 
 /**
@@ -23,6 +23,17 @@ function ViewPanel() {
   const handleClick = () => {
     dispatch({
       type: SWITCH_MODE,
+      payload: true,
+    });
+  };
+
+  /**
+   * Click delete button
+   */
+  const handleDelete = () => {
+    // Pop-up the confirmation modal
+    dispatch({
+      type: SWITCH_MODAL,
       payload: true,
     });
   };
@@ -48,6 +59,11 @@ function ViewPanel() {
             <Button className="edit" onClick={handleClick}>
               <EditSvg />
               Edit
+            </Button>
+
+            <Button className="delete" ml="24px" onClick={handleDelete}>
+              <DeleteSvg />
+              Delete
             </Button>
           </Flex>
         </>
