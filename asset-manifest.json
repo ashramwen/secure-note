@@ -1,27 +1,18 @@
 {
   "files": {
-    "main.js": "/secure-note/static/js/main.6a1e8386.chunk.js",
-    "main.js.map": "/secure-note/static/js/main.6a1e8386.chunk.js.map",
-    "runtime-main.js": "/secure-note/static/js/runtime-main.bd02a73f.js",
-    "runtime-main.js.map": "/secure-note/static/js/runtime-main.bd02a73f.js.map",
-    "static/js/2.99b5e6e0.chunk.js": "/secure-note/static/js/2.99b5e6e0.chunk.js",
-    "static/js/2.99b5e6e0.chunk.js.map": "/secure-note/static/js/2.99b5e6e0.chunk.js.map",
+    "main.js": "/secure-note/static/js/main.ab667602.js",
+    "static/media/spinner.svg": "/secure-note/static/media/spinner.227ae26ffe006676ebd289075432a5ce.svg",
+    "static/media/saving.svg": "/secure-note/static/media/saving.3f9ebb87e68d8c07c4b78bf511f406ca.svg",
+    "static/media/delete.svg": "/secure-note/static/media/delete.40379c7dbcfe62deb3e809c0c902f94e.svg",
+    "static/media/save.svg": "/secure-note/static/media/save.b0ab272fa419064f5edbb66d44c6f718.svg",
+    "static/media/plus.svg": "/secure-note/static/media/plus.79f261cefc5a0503da342ba648795f4c.svg",
     "index.html": "/secure-note/index.html",
-    "precache-manifest.79f06f6785f1dee8d6d12096cda37224.js": "/secure-note/precache-manifest.79f06f6785f1dee8d6d12096cda37224.js",
-    "service-worker.js": "/secure-note/service-worker.js",
-    "static/js/2.99b5e6e0.chunk.js.LICENSE.txt": "/secure-note/static/js/2.99b5e6e0.chunk.js.LICENSE.txt",
-    "static/media/cancel.37465d67.svg": "/secure-note/static/media/cancel.37465d67.svg",
-    "static/media/close.ceefb4de.svg": "/secure-note/static/media/close.ceefb4de.svg",
-    "static/media/delete.370111b1.svg": "/secure-note/static/media/delete.370111b1.svg",
-    "static/media/edit.232686a0.svg": "/secure-note/static/media/edit.232686a0.svg",
-    "static/media/plus.61d72d1a.svg": "/secure-note/static/media/plus.61d72d1a.svg",
-    "static/media/save.51ed5ea8.svg": "/secure-note/static/media/save.51ed5ea8.svg",
-    "static/media/saving.e55cb6b8.svg": "/secure-note/static/media/saving.e55cb6b8.svg",
-    "static/media/spinner.85759e84.svg": "/secure-note/static/media/spinner.85759e84.svg"
+    "static/media/edit.svg": "/secure-note/static/media/edit.88815241ff79ec8ae66bf8d038ebe043.svg",
+    "static/media/close.svg": "/secure-note/static/media/close.a9d120bf07862e80e86114adc7392aa4.svg",
+    "static/media/cancel.svg": "/secure-note/static/media/cancel.8e34a8e12876cd1ef8bea9a744935dd0.svg",
+    "main.ab667602.js.map": "/secure-note/static/js/main.ab667602.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.bd02a73f.js",
-    "static/js/2.99b5e6e0.chunk.js",
-    "static/js/main.6a1e8386.chunk.js"
+    "static/js/main.ab667602.js"
   ]
 }
