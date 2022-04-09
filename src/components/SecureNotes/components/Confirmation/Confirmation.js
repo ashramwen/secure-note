@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { white } from 'styles/colors';
 import { CancelSvg, CloseSvg, DeleteSvg } from 'svg';
 import Flex from 'common/Flex';

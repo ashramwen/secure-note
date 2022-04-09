@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 import { useImmerReducer } from 'use-immer';
 import { secureNotesReducer } from './secureNotesReducer';
 

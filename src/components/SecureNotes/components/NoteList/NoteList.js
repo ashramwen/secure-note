@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import classnames from 'classnames';
+import { useContext } from 'react';
+import clsx from 'clsx';
 import { decrypt } from 'utils';
 import PromiseGuard from 'utils/PromiseGuard';
 import { PlusSvg } from 'svg';
@@ -78,7 +78,7 @@ function NoteList() {
       <Flex flexDirection="column" overflowY="auto" pb="60px">
         {notes?.map((note) => (
           <Item
-            className={classnames({ selected: selected?.id === note.id })}
+            className={clsx({ selected: selected?.id === note.id })}
             key={note.id}
             onClick={() => handleClick(note)}
           >

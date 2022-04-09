@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import Flex from 'common/Flex';
 import Spinner from 'common/Spinner';
 import { SecureNotesContext } from 'context/SecureNotesContext';

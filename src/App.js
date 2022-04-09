@@ -1,4 +1,3 @@
-import React from 'react';
 import { Normalize } from 'styled-normalize';
 import GlobalStyle from 'styles/global-styles';
 import { SecureNotesProvider } from 'context/SecureNotesContext';

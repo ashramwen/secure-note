@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import Flex from 'common/Flex';
 import { SpinnerSvg } from 'svg';

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { isNil } from 'utils/isNil';
 import { EditSvg } from 'svg';
@@ -40,7 +40,7 @@ function ViewPanel() {
             </Flex>
             <Divider />
             <Box>
-              <ReactMarkdown className="wrap" source={plainText} />
+              <ReactMarkdown className="wrap" children={plainText} />
             </Box>
           </Flex>
 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { encrypt } from 'utils';
 import { CancelSvg, DeleteSvg, SaveSvg } from 'svg';
 import Button from 'common/Button';
