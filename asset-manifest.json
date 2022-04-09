@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/secure-note/static/js/main.ab667602.js",
+    "main.js": "/secure-note/static/js/main.5fe447b5.js",
     "static/media/spinner.svg": "/secure-note/static/media/spinner.227ae26ffe006676ebd289075432a5ce.svg",
     "static/media/saving.svg": "/secure-note/static/media/saving.3f9ebb87e68d8c07c4b78bf511f406ca.svg",
     "static/media/delete.svg": "/secure-note/static/media/delete.40379c7dbcfe62deb3e809c0c902f94e.svg",
@@ -10,9 +10,9 @@
     "static/media/edit.svg": "/secure-note/static/media/edit.88815241ff79ec8ae66bf8d038ebe043.svg",
     "static/media/close.svg": "/secure-note/static/media/close.a9d120bf07862e80e86114adc7392aa4.svg",
     "static/media/cancel.svg": "/secure-note/static/media/cancel.8e34a8e12876cd1ef8bea9a744935dd0.svg",
-    "main.ab667602.js.map": "/secure-note/static/js/main.ab667602.js.map"
+    "main.5fe447b5.js.map": "/secure-note/static/js/main.5fe447b5.js.map"
   },
   "entrypoints": [
-    "static/js/main.ab667602.js"
+    "static/js/main.5fe447b5.js"
   ]
 }
