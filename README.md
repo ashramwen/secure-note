@@ -21,7 +21,7 @@ yarn start
 
 ## Flowchart
 
-![flowchart](https://github.com/ashramwen/secure-note/blob/master/flowchart.png)
+![flowchart](https://github.com/ashramwen/secure-note/blob/main/flowchart.png)
 
 ## Introduction
 
